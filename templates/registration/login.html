@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} 8-"A" | LOGIN{% endblock title %}
+{% block content %}
+
+{% if user.is_authenticated %}
+    <center>
+        <h1>Sorry, (s)he is register !!</h1>
+        <a href="{% url 'home' %}" class="btn btn-danger">Home Page</a>
+    </center>
+{% else %}
+
+    <style>
+        .mb-3 input {
+            background-color: #1e2833;;
+        }
+    </style>
+
+    <link rel="stylesheet" href="{% static 'main/login/assets/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'main/login/assets/fonts/ionicons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'main/login/assets/css/Login-Form-Dark.css' %}">
+    <link rel="stylesheet" href="{% static 'main/login/assets/css/Registration-Form-with-Photo.css' %}">
+    <link rel="stylesheet" href="{% static 'main/login/assets/css/styles.css' %}">
+
+    <section class="login-dark">
+        <form method="post">{% csrf_token %}
+            <h2 class="visually-hidden">Login Form</h2>
+            <div class="illustration"><i class="icon ion-ios-locked-outline"></i></div>
+            <div class="mb-3 form-control">{{ form.as_p }}</div>
+            <div class="mb-3"><button class="btn btn-primary d-block w-100" type="submit">Log In</button></div><a class="forgot" href="#">Forgot your email or password?</a>
+        </form>
+    </section>
+
+    {% endif %}
+{% endblock content %}

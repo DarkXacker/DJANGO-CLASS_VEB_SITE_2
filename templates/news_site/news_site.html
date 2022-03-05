@@ -1,0 +1,128 @@
+{% load static %}
+<!doctype html> 
+<html lang="en"> 
+  
+  <head> 
+      <!-- Required meta tags --> 
+      <meta charset="utf-8"> 
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> 
+      <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
+
+      <!-- Bootstrap CSS --> 
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" 
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"> 
+
+      <style>
+        .embed-responsive {
+          width: 620px;
+          height: 340px;
+        }
+        img {
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          position: relative;
+          right: 15px;
+        }
+      </style>
+
+  </head>
+
+  <nav class="navbar navbar-light bg-light">
+    <a class="navbar-brand" href="{% url 'home' %}">
+    <img src="{% static 'main/img/``.jpg' %}" alt="Logo" class="nav-img">
+        {{ user.username | title }}
+    </a>
+    {% if user.is_authenticated %}
+      <div class="nav-a">
+            <a class="navbar-brand" href="{% url 'home' %}">Home Page</a>
+            <a class="navbar-brand" href="{% url 'pupil_list' %}">Pupils</a>
+            <a class="navbar-brand" href="{% url 'my_classrom_video' %}">My Classroom</a>
+            <a class="navbar-brand" href="{% url 'news_site' %}">Site news</a>
+            <a class="navbar-brand" href="{% url 'contact_index' %}">Contact Us</a>
+            <a class="navbar-brand" href="{% url 'password_change' %}">Change Password</a>
+            <a class="navbar-brand" href="{% url 'logout' %}">Log Out</a>
+
+      </div>
+    {% else %}
+    <div class="nav-a">
+        <a class="navbar-brand" href="{% url 'login' %}">Sign In</a>
+        <a class="navbar-brand" href="{% url 'signup' %}">Sign Up</a>
+    </div>
+    {% endif %}
+  </nav>
+
+{% if user.is_authenticated %}
+  {% if video %}
+  <center>
+    <div class="container mt-3"> 
+      {% for x in video %} 
+      <h3>{{x.caption}}</h3> 
+      <video class="embed-responsive embed-responsive-16by9" controls="controls" > 
+          <source src="{{x.video.url}}" type="video/mp4"/> 
+        </video> 
+      {% endfor %} 
+    </div> 
+  </center>
+  {% else %}
+  
+  <center>
+    <h1 class="pt-5">Sorry, no information found</h1>
+    <h3>No videos available yet !!</h3>
+  </center><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+  {% endif %}
+
+  {% else %}
+
+    <center>
+      <h1>Sign up first to use the site !!</h1>
+      <a class="btn btn-outline-info" href="{% url 'login' %}">Sign In</a>
+      <a class="btn btn-outline-danger" href="{% url 'signup' %}">Sign Up</a>
+    </center><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  {% endif %}
+
+    <!-- Footer section -->
+    <footer class="footer">
+      <div class="container">
+          <div class="footer__brand">
+              <img src="{% static 'main/img/``.jpg' %}" alt="Logo">
+          </div>
+          <nav class="footer__navigation">
+              <ul class="footer__navigation-items">
+                  <li class="footer__navigation-item">
+                      <a href="{% url 'home' %}">Home Page</a>
+                  </li>
+                  <li class="footer__navigation-item">
+                      <a href="{% url 'pupil_list' %}">Pupils</a>
+                  </li>
+                  <li class="footer__navigation-item">
+                      <a href="{% url 'my_classrom_video' %}">My Classroom</a>
+                  </li>
+                  </li>
+                  <li class="footer__navigation-item">
+                      <a href="{% url 'news_site' %}">Site News</a>
+                      </li>
+                  <li class="footer__navigation-item">
+                      <a href="{% url 'contact_index' %}">Contact Us</a>
+                  </li>
+              </ul>
+          </nav>
+          <p class="footer__text">
+              Copyright ©2021 All rights reserved | This template is made widh by 🖤 Colorlib
+          </p>
+      </div>
+    </footer>
+    <!-- /Footer section -->
+
+    <!-- Optional JavaScript --> 
+    <!-- jQuery first, then Popper.js, then Bootstrap JS --> 
+   
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-
+    DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script> 
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-
+    9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script> 
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-
+    B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script> 
+  </body> 
+</html>

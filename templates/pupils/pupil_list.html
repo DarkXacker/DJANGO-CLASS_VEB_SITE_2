@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+<link rel="stylesheet" href="{% static 'main/assets/bootstrap/css/bootstrap.min.css' %}">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700">
+<link rel="stylesheet" href="{% static 'main/assets/fonts/font-awesome.min.css' %}">
+<link rel="stylesheet" href="{% static 'main/assets/fonts/ionicons.min.css' %}">
+<link rel="stylesheet" href="{% static 'main/assets/css/Article-Clean.css' %}">
+<link rel="stylesheet" href="{% static 'main/assets/css/Footer-Basic.css' %}">
+<link rel="stylesheet" href="{% static 'main/assets/css/Header-Blue.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.4.8/swiper-bundle.min.css">
+<link rel="stylesheet" href="{% static 'main/assets/css/Newsletter-Subscription-Form.css' %}">
+<link rel="stylesheet" href="{% static 'main/assets/css/Simple-Slider.css' %}">
+<link rel="stylesheet" href="{% static 'main/assets/css/styles.css' %}">
+<link rel="stylesheet" href="{% static 'main/assets/css/Team-Grid.css' %}">
+<link rel="stylesheet" href="{% static 'main/assets/css/Testimonials.css' %}">
+
+    <!-- my group -->
+    <footer class="footer-basic">
+        <section class="team-grid">
+            <div class="container">
+                <div class="intro">
+                    <h2 class="text-center">My group</h2>
+                    <p class="text-center">We are younger programmer</p>
+                </div>
+                <div class="row people">
+                    <div class="col-md-4 col-lg-3 item">
+                        <div class="box" style="background-image:url({% static 'main/assets/img/1.jpg' %})">
+                            <div class="cover">
+                                <h3 class="name">Abdivasiyev Sunnatillo</h3>
+                                <p class="title">Programmer</p>
+                                <div class="social"><a href="#"><i class="fa fa-facebook-official"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="https://instagram.com/proger_s_a" target="blank"><i class="fa fa-instagram"></i></a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-lg-3 item">
+                        <div class="box" style="background-image:url({% static 'main/assets/img/2.jpg' %})">
+                            <div class="cover">
+                                <h3 class="name">Erkinov Abdumalik</h3>
+                                <p class="title">Programmer</p>
+                                <div class="social"><a href="#"><i class="fa fa-facebook-official"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-instagram"></i></a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-lg-3 item">
+                        <div class="box" style="background-image:url({% static 'main/assets/img/3.jpg' %})">
+                            <div class="cover">
+                                <h3 class="name">Sodiqov Sardor</h3>
+                                <p class="title">Programmer</p>
+                                <div class="social"><a href="#"><i class="fa fa-facebook-official"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-instagram"></i></a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-lg-3 item">
+                        <div class="box" style="background-image:url({% static 'main/assets/img/4.jpg' %})">
+                            <div class="cover">
+                                <h3 class="name">Jalilov Baxtiyor</h3>
+                                <p class="title">Programmer</p>
+                                <div class="social"><a href="#"><i class="fa fa-facebook-official"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-instagram"></i></a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- end my group -->
+
+    {% if user.first_name == "Dilafro'z" and user.last_name == "Boyqobilova" %}
+    <h1 style="text-align: center; color: red;">I Love You Dilafro'z ! <br>Author: Sunnatillo</h1>
+    {% endif %}
+
+    <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
+
+    <style>
+        .card {
+            width: 35%;
+        }
+
+        .btn-danger {
+            text-align: center;
+            width: 100px;
+        }
+
+        .img_photos {
+            padding-top: 20px;
+        }
+    </style>
+    {% if user.is_authenticated %}
+    
+    <div class="img_photos">
+        {% for pupil in object_list %}
+            <center>
+                <div class="card mb-3">
+                    <h3 class="card-title">{{ pupil.title }}</h3>
+                    <img src="{{ pupil.photo.url }}" class="card-img-top" alt="{{ article.title }}">
+                    <div class="card-body">
+                        <a class="btn btn-danger" href="{% url 'pupil_detail' pupil.pk %}">More</a>
+                    </div>
+                </div>
+            </center>
+        {% endfor %}    
+    </div>
+
+    {% else %}
+    <center>
+      <h1>Sign up first to use the site !!</h1>
+      <a class="btn btn-outline-info" href="{% url 'login' %}">Sign In</a>
+      <a class="btn btn-outline-danger" href="{% url 'signup' %}">Sign Up</a>
+    </center><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+{% endif %}
+
+
+<script src="{% static 'main/assets/bootstrap/js/bootstrap.min.js' %}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.4.8/swiper-bundle.min.js"></script>
+<script src="{% static 'main/assets/js/Simple-Slider.js' %}"></script>
+
+{% endblock content %}

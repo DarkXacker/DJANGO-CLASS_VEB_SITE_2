@@ -1,0 +1,56 @@
+.contact {
+    padding: 6.25rem 1.25rem;
+}
+
+textarea, input {
+    width: 100%;
+    padding: 0.87rem;
+    margin-top: 0.625rem;
+    margin-bottom: 0.625rem;
+    border: 1px solid #f0e9ff;
+    border-radius: 5px;
+    padding-left: 1.12rem;
+    font-size: 0.81rem;
+    background: transparent;
+    color: #495057;
+}
+
+textarea:focus,
+input:focus {
+    outline: 0;
+}
+
+.half-row {
+    width: 50%;
+    float: left;
+    box-sizing: border-box;
+}
+
+.contact__firstname {
+    padding-right: 1.87rem;
+}
+
+.contact__email {
+    padding-left: 1.87rem;
+}
+
+.contact__send {
+    margin-top: 1.87rem;
+}
+
+.button {
+    border: none;
+    background: linear-gradient(to right, #1345e6 0%, #ed239f 51%, #1345e6 100%);
+    background-size: 200% auto;
+    color: #FFFFFF;
+    font-weight: 500;
+    font-size: 14px;
+    padding: 1.26rem 2.5rem;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+}
+
+.button:hover {
+    background-position: right center;
+}

@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
+    <link href="/your-path-to-fontawesome/css/fontawesome.css" rel="stylesheet">
+    <link href="/your-path-to-fontawesome/css/brands.css" rel="stylesheet">
+    <link href="/your-path-to-fontawesome/css/solid.css" rel="stylesheet">
+   
+  {% if user.is_authenticated %}
+ 
+    <center>
+          {% if object.photo  %}
+      
+          <div class="card mb-3" style="max-width: 770px;">
+              <div class="row g-0">
+                <div class="col-md-4">
+                  <img src="{{ object.photo.url }}" class="img-fluid rounded-start" alt="...">
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title">{{ object.title }}</h5>
+                    <p class="card-text">{{ object.body }}</p>
+                    </div> 
+                  <a class="btn btn-success" style="font-style: italic;" href="{% url 'pupil_list' %}">Back</a>
+                </div>
+              </div>
+            </div>
+            
+          {% endif %}
+    </center>
+
+  {% else %}
+
+      <center>
+        <h1>Sign up first to use the site !!</h1>
+        <a class="btn btn-outline-info" href="{% url 'login' %}">Sign In</a>
+        <a class="btn btn-outline-danger" href="{% url 'signup' %}">Sign Up</a>
+      </center><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  {% endif %}
+
+{% endblock content %}

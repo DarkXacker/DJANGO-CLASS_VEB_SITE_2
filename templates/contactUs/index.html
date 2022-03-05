@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/contact.css' %}">
+   
+    {% if user.is_authenticated %}
+    {% load static %}
+    <!DOCTYPE html>
+    <html lang="en">
+    
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+        <title>Untitled</title>
+        <link rel="stylesheet" href="{% static 'main/contact/assets/bootstrap/css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bitter:400,700">
+        <link rel="stylesheet" href="{% static 'main/contact/assets/css/Contact-Form-Clean.css' %}">
+        <link rel="stylesheet" href="{% static 'main/contact/assets/css/Header-Dark.css' %}">
+        <link rel="stylesheet" href="{% static 'main/contact/assets/css/Navigation-with-Button.css' %}">
+        <link rel="stylesheet" href="{% static 'main/contact/assets/css/styles.css' %}">
+    </head>
+    
+    <body>
+        <div data-bss-parallax-bg="true" style="height: 500px;background-image: url(https://unsplash.it/1800/900?image=1051);background-position: center;background-size: cover;">
+            <section class="contact-clean">
+                <form method="post"> {% csrf_token %}
+                    <h2 class="text-center">Contact us</h2>
+                    <div class="mb-3"><input class="form-control" type="text" name="fname" placeholder="Name"></div>
+                    <div class="mb-3"><input class="form-control" type="email" name="email" placeholder="Email"></div>
+                    <div class="mb-3"><textarea class="form-control" name="subject" placeholder="Message" rows="14"></textarea></div>
+                    <div class="mb-3">
+                        <button class="btn btn-primary" type="submit">send </button>
+                        <a class="btn btn-primary" href="{% url 'home' %}">Home Page</a>
+                    </div>
+                </form>
+            </section>
+        </div>
+        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+        <script src="assets/js/bs-init.js"></script>
+    </body>
+    
+    </html>
+
+    {% else %}
+
+        <center>
+        <h1>Sign up first to use the site !!</h1>
+        <a class="btn btn-outline-info" href="{% url 'login' %}">Sign In</a>
+        <a class="btn btn-outline-danger" href="{% url 'signup' %}">Sign Up</a>
+        </center><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    {% endif %}
+
+{% endblock content %}
+

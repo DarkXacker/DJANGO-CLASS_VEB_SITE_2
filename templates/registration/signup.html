@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} 8-"A" | REGISTRATION{% endblock title %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<style>
+    h2 {
+        text-align: center;
+        padding: 10px;
+
+    }
+    .btn-success {
+        width: 100px;
+    }
+    form {
+        padding-top: 5px;
+    }
+</style>
+
+<link rel="stylesheet" href="{% static 'main/css/main.css' %}">
+{% if user.is_authenticated %}
+    <center>
+        <h1>Sorry, (s)he is register !!</h1>
+        <a href="{% url 'home' %}" class="btn btn-danger">Home Page</a>
+    </center>
+
+{% else %}
+    <h2>Registration</h2>
+    <form method="post">{% csrf_token %}
+            {{ form|crispy }}
+            <br>
+            <button class="btn btn-success" type="submit">Send</button>
+            <br><br><br>
+    </form>
+
+{% endif %}
+{% endblock content %}

@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load embed_video_tags %}
+
+{% block content %}
+
+    <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
+
+    <style>
+        h1 {
+            padding-top: 20px;
+        }
+        .h2 {
+            padding-bottom: 500px;
+        }
+    </style>
+    
+    {% if user.is_authenticated %}
+        <center>
+            {% if videos %}
+            <h1>Welcome to the video page!</h1>
+            <h3>Enjoy watching interesting videos!</h3>
+
+            <div class="d-flex flex-wrap">
+                {% for item in videos %}
+                    <div class="px-3 mb-5">
+                        {% video item.url '620x340' %}
+                        <div class="d-flex justify-content-start">
+                            {{ item.title }}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <div class="containser">
+                <h1 class="h1">Sorry, no information found</h1>
+                <h2 class="h2">No videos available yet !!</h2>
+            </div>
+            {% endif %}
+        </center>
+    
+    {% else %}
+
+        <center>
+        <h1>Sign up first to use the site !!</h1>
+        <a class="btn btn-outline-info" href="{% url 'login' %}">Sign In</a>
+        <a class="btn btn-outline-danger" href="{% url 'signup' %}">Sign Up</a>
+        </center><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    {% endif %}
+
+{% endblock content %}
