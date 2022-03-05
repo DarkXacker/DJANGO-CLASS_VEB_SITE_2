@@ -1,6 +1,4 @@
-from operator import mod
-from re import template
-from django.views.generic import ListView, DetailView
+\from django.views.generic import ListView, DetailView
 from .models import Pupil
 
 # Create your views here.
