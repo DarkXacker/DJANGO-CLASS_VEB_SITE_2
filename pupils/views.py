@@ -1,4 +1,3 @@
-from msilib.schema import ListView
 from operator import mod
 from re import template
 from django.views.generic import ListView, DetailView
